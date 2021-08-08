@@ -1,12 +1,14 @@
 import random,math,timeit,numpy,statistics
 import matplotlib.pyplot as plt
+import seaborn as sns
+sns.set_style("darkgrid")
 
 start = timeit.default_timer()
 
 rate = [0]*90
 a = [0]*90
-n = 800                                       #no. of draws
-N = 100000                                        #no. of sample
+n = 2000                                       #no. of draws
+N = 10000                                        #no. of sample
 hits = [0]*N
 pop = []
 
@@ -39,8 +41,8 @@ print("number of hits", statistics.mean(hits))
 print(hits)
 
 plt.hist(hits, bins=range(hits[N-1]+1),density='true',align='left',color='skyblue',ec='blue')
-plt.xticks(numpy.arange(0,20,1),numpy.arange(0,20))
-plt.title("Distribution of amount of 5 stars in 500 draws, with a sample size of 100000")
+plt.title("Distribution of amount of 5 stars in " + str(n) + "draws, with a sample size of " + str(N))
+plt.xlim(min(hits)-1,max(hits))
 plt.xlabel("No. of 5 stars")
 plt.ylabel("Percentage of players")
 
